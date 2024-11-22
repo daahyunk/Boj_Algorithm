@@ -23,6 +23,7 @@ readline.on('line', function(line) {
     });
 
     // 등장 횟수와 순서를 기준으로 정렬
+    // Object.entries(table)는 자바스크립트 객체를 배열로 변환해주는 메소드
     const sorted = Object.entries(table).sort((a, b) => {
         // 등장 횟수가 다를 때는 등장 횟수가 많은 순서대로
         if (a[1] !== b[1]) return b[1] - a[1];
@@ -32,10 +33,11 @@ readline.on('line', function(line) {
 
     // 최종 결과 배열
     let result = [];
+    // [숫자, 등장 횟수] 형태
     sorted.forEach(([number, count]) => {
         // count만큼 number를 배열에 채움
         const repeatedNumbers = Array(count).fill(number);
-        // 결과에 추가
+        // concat()은 배열을 합치는 메소드
         result = result.concat(repeatedNumbers);
     });
     
